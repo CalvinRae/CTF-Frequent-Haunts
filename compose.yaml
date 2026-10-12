@@ -1,0 +1,41 @@
+services:
+
+  server:
+    build:
+      context: .
+    ports:
+      - 9000:80
+    secrets:
+      - db_root_password
+
+  db:
+    image: mysql:latest
+    volumes:
+      - mysqldbVolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MYSQL_DATABASE: FrequentHaunts
+    ports:
+      - 3307:3306
+    secrets:
+      - db_root_password
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+    secrets:
+      - db_root_password
+
+volumes:
+  mysqldbVolume:
+
+secrets:
+  db_root_password:
+    file: ./db_root_password.txt

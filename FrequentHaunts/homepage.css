@@ -1,0 +1,35 @@
+#banner {
+    padding: 80px;
+    text-align: center;
+    background: #f98418;
+}
+#banner h1{
+    font-size: 90px;
+}
+#banner h2{
+    font-size: 45px;
+}
+#user {
+    font-size:45px;
+}
+#navbar a {
+  float: left;
+  display: block;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+#navbar a:hover {
+  background-color: #444;
+}
+#main {
+    width:50%;
+    display:block;
+    text-align: center;
+    font-size: 25px;
+}
+* {
+    font-family: Arial;
+}
