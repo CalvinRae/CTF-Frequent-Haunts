@@ -11,7 +11,7 @@
 
 	<form action=create_post.php method="POST" enctype="multipart/form-data">
 	<label>Upload your image:</label><br>
-	<input type="file" id="imageUpload" name="image" accept="image/*"><br>
+	<input type="file" id="imageUpload" name="image"><br>
 	<button type=submit>Post</button>
 	</form>
 </body>
@@ -35,10 +35,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === 0){
 
     if (!is_dir(__DIR__ . "/uploads")) {
         die("Uploads folder missing");
-    }
-
-    if(str_ends_with($_FILES['image']['name'],".php")){
-        die("PHP Files are prohibited!");
     }
 
     if (!move_uploaded_file($tmpPath, $uploadPath)) {
