@@ -1,7 +1,7 @@
 <?php
 $host="db:3306";
 $username="root";
-$pass=file_get_contents("/run/secrets/db_root_password");
+$pass=getenv("db_root_password");
 $dbname="FrequentHaunts";
 
 

@@ -5,8 +5,7 @@ services:
       context: .
     ports:
       - 9000:80
-    secrets:
-      - db_root_password
+    env_file: ./.env
 
   db:
     image: mysql:latest
