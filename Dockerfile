@@ -43,6 +43,8 @@ FROM php:8.5-apache
 # Use the default production configuration for PHP runtime arguments, see
 # https://github.com/docker-library/docs/tree/master/php#configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# Necessary PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install exif
 
@@ -51,6 +53,18 @@ COPY ./FrequentHaunts /var/www/html
 COPY php.ini /usr/local/etc/php/php.ini
 RUN chown -R www-data:www-data /var/www/html/
 
-# Switch to a non-privileged user (defined in the base image) that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-USER www-data
+# Set up SSH
+RUN apt update && apt install -y openssh-server
+RUN echo "StrictModes no" >> /etc/ssh/sshd_config
+RUN echo "Match User www-data\n    ForceCommand /bin/bash" >> /etc/ssh/sshd_config
+EXPOSE 22
+ENTRYPOINT service ssh start && apache2-foreground
+
+# Create new user for participants to escalate to, give it an ssh key with a weak passphrase
+RUN useradd -m -s /bin/bash Caldera
+RUN mkdir /home/Caldera/.ssh
+RUN ssh-keygen -N password -t ed25519 -f /home/Caldera/.ssh/id_ed25519
+RUN cat /home/Caldera/.ssh/id_ed25519.pub >> /home/Caldera/.ssh/authorized_keys
+RUN chmod -R 555 /home/Caldera
+RUN chmod 400 /home/Caldera/.ssh/authorized_keys
+RUN chown -R Caldera:Caldera /home/Caldera
