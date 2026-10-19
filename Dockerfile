@@ -56,7 +56,6 @@ RUN chown -R www-data:www-data /var/www/html/
 # Set up SSH
 RUN apt update && apt install -y openssh-server
 RUN echo "StrictModes no" >> /etc/ssh/sshd_config
-RUN echo "Match User www-data\n    ForceCommand /bin/bash" >> /etc/ssh/sshd_config
 EXPOSE 22
 ENTRYPOINT service ssh start && apache2-foreground
 
@@ -68,3 +67,8 @@ RUN cat /home/Caldera/.ssh/id_ed25519.pub >> /home/Caldera/.ssh/authorized_keys
 RUN chmod -R 555 /home/Caldera
 RUN chmod 400 /home/Caldera/.ssh/authorized_keys
 RUN chown -R Caldera:Caldera /home/Caldera
+
+# Attempt to configure perms to prevent participants from sabotaging the machine
+RUN chmod 700 /usr/bin/chmod
+RUN chmod -R 555 /var/www/html
+RUN chmod 777 /var/www/html/uploads
