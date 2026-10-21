@@ -72,3 +72,11 @@ RUN chown -R Caldera:Caldera /home/Caldera
 RUN chmod 700 /usr/bin/chmod
 RUN chmod -R 555 /var/www/html
 RUN chmod 777 /var/www/html/uploads
+
+# Add flags into container
+COPY flag1.txt /var/www/flag1.txt
+RUN chmod 444 /var/www/flag1.txt
+RUN chown www-data:www-data /var/www/flag1.txt
+COPY flag2.txt /home/Caldera/flag2.txt
+RUN chmod 400 /home/Caldera/flag2.txt
+RUN chown Caldera:Caldera /home/Caldera/flag2.txt
