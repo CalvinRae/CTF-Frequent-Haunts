@@ -8,7 +8,7 @@
 <body>
     <h2 title="Page Title">Map</h2>
 
-<div id="googleMap" style="width:100%;height:700px;">
+<div id="googleMap" style="width:100%;height:900px;">
 
 </div>
 
@@ -17,7 +17,7 @@ function interactiveMap(){
 	//create the main map
 	var mapProp={
 		center: new google.maps.LatLng(51.508742,-0.120850),
-		zoom:10,
+		zoom:5,
 	};
 	map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
@@ -47,7 +47,7 @@ function addIcon(path,lat,long){
 }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=interactiveMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=[your_key_here]&callback=interactiveMap"></script>
 
 </body>
 </html>
