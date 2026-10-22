@@ -8,7 +8,7 @@
 <body>
     <h2 title="Page Title">Map</h2>
 
-<div id="googleMap" style="width:100%;height:900px;">
+<div id="googleMap" style="width:100%;height:800px;">
 
 </div>
 

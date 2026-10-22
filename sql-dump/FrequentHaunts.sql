@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db:3306
--- Generation Time: Oct 21, 2026 at 02:20 PM
+-- Generation Time: Oct 22, 2026 at 01:17 PM
 -- Server version: 26.7.0
 -- PHP Version: 8.3.26
 
@@ -35,6 +35,15 @@ CREATE TABLE `Posts` (
   `longitude` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `Posts`
+--
+
+INSERT INTO `Posts` (`postID`, `userID`, `imagePath`, `latitude`, `longitude`) VALUES
+(1, 3, '/uploads/babayaga.jpg', 52.551288888889, 34.025688888889),
+(2, 3, '/uploads/dullahan.jpg', 53.633508333333, 8.0859388888889),
+(3, 3, '/uploads/kuchisakeonna.jpg', 35.970188888889, 139.76806666667);
+
 -- --------------------------------------------------------
 
 --
@@ -52,8 +61,7 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`userID`, `username`, `passwordHash`) VALUES
-(1, 'Test', '$argon2id$v=19$m=65536,t=4,p=1$b0h1OWE2SnQxQ3R4SGl2Ug$031GdDk09VJBfbgSdV0DEX7mu/LePGH9FFrgbaUAh+I'),
-(2, 'John', '$argon2id$v=19$m=65536,t=4,p=1$bm9UdE1JLjVEM2JHV1FRMw$yE42sXLqzgHHk8sa3o29vxRfg7iRob+8S1kDnXj61I8');
+(3, 'Caldera', '$argon2id$v=19$m=65536,t=4,p=1$SjdsS01LM3pOa0ZycndkdA$PnV+Y1MHHzEtFNquL7BgTD6Q0I6RV3owScqwp+VSm0A');
 
 --
 -- Indexes for dumped tables
@@ -80,13 +88,13 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Posts`
 --
 ALTER TABLE `Posts`
-  MODIFY `postID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `postID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `userID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

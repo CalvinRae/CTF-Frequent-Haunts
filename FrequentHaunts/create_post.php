@@ -34,7 +34,7 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === 0){
     $accessPath = "/uploads/" . $_FILES['image']['name'];
 
     if (!is_dir(__DIR__ . "/uploads")) {
-        die("Uploads folder missing");
+        mkdir(__DIR__ . "/uploads");
     }
 
     if (!move_uploaded_file($tmpPath, $uploadPath)) {
