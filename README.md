@@ -33,7 +33,7 @@ Setting up the server requires adding/modifying a few files:
 This was intended to be an easy challenge, as many of our members were beginners with only about a month of ethical hacking experience.
 As such, the foothold was designed so that it would be straightforward for most or all participants (we had gone over shells with the example of a file upload vulnerability previously).
 The horizontal privilege escalation was intended to be something participants had not yet encountered but could learn during the CTF.
-## Outcomes
+### Outcomes
 Out of 9 teams, 4 were able to get the first flag, but only one was able to get the second, and this was by someone with much more experience than most participants.<br>
 This suggests to me that the first part was largely successful, though there may have been some confusion as reverse shells would not have worked without port forwarding
 (as the target machine is not on the same network).<br>
